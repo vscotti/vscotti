@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/DEREMATETESIS/!svn/ver/36/deREmateTesisWebApp/src/main/java/com/uade/tesis/services/daos
+END
+CategoriaDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/DEREMATETESIS/!svn/ver/42/deREmateTesisWebApp/src/main/java/com/uade/tesis/services/daos/CategoriaDAO.java
+END
+PostingDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/DEREMATETESIS/!svn/ver/43/deREmateTesisWebApp/src/main/java/com/uade/tesis/services/daos/PostingDAO.java
+END
+UsuarioDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/DEREMATETESIS/!svn/ver/42/deREmateTesisWebApp/src/main/java/com/uade/tesis/services/daos/UsuarioDAO.java
+END

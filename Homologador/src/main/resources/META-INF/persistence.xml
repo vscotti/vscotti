@@ -1,0 +1,55 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence">
+
+	<persistence-unit name="pu" transaction-type="RESOURCE_LOCAL">
+
+		<exclude-unlisted-classes>true</exclude-unlisted-classes>
+
+		<class>com.abc.ceop.model.entities.Campaign</class>
+		<class>com.abc.ceop.model.entities.CellPhoneConfiguration</class>
+		<class>com.abc.ceop.model.entities.CellPhonePattern</class>
+		<class>com.abc.ceop.model.entities.Country</class>
+		<class>com.abc.ceop.model.entities.CsvFileConfiguration</class>
+		<class>com.abc.ceop.model.entities.EmailContact</class>
+		<class>com.abc.ceop.model.entities.EmailLogs</class>
+		<class>com.abc.ceop.model.entities.EmailSuscriberWeb</class>
+		<class>com.abc.ceop.model.entities.FirstProcessConfigurationVariable</class>
+		<class>com.abc.ceop.model.entities.Location</class>
+		<class>com.abc.ceop.model.entities.LocationSynonym</class>
+		<class>com.abc.ceop.model.entities.PollQuestionMatcher</class>
+		<class>com.abc.ceop.model.entities.Questionnaire</class>
+		<class>com.abc.ceop.model.entities.RecordDetail</class>
+		<class>com.abc.ceop.model.entities.SecondProcessConfigurationVariable</class>
+		<class>com.abc.ceop.model.entities.Thresholds</class>
+		<class>com.abc.ceop.model.entities.LocationSearchConfig</class>
+		<class>com.abc.ceop.model.entities.RecordDetailFilter</class>
+		
+		
+		
+		<properties>
+			<property name="hibernate.hbm2ddl.auto" value="create" />
+			<property name="hibernate.cache.use_second_level_cache"
+				value="true" />
+			<property name="hibernate.cache.provider_class" value="net.sf.ehcache.hibernate.EhCacheProvider" />
+		</properties>
+	</persistence-unit>
+
+	<persistence-unit name="puwebcati" transaction-type="RESOURCE_LOCAL">
+
+		<exclude-unlisted-classes>true</exclude-unlisted-classes>
+
+		<class>com.abc.ceop.model.entities.Rspsts</class>
+		<class>com.abc.ceop.model.entities.QuienRespondeLaEncuesta</class>
+		<class>com.abc.ceop.model.entities.AutoExcluido</class>
+	
+		
+		<properties>
+			<property name="hibernate.hbm2ddl.auto" value="create" />
+			<property name="hibernate.cache.use_second_level_cache"
+				value="true" />
+			<property name="hibernate.cache.provider_class" value="net.sf.ehcache.hibernate.EhCacheProvider" />
+		</properties>
+	</persistence-unit>
+
+</persistence>

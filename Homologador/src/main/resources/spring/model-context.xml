@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:cache="http://www.springframework.org/schema/cache"
+	xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+	http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
+	
+	
+<!-- 	Base PU -->
+
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceUnitName" value="pu" />
+		<property name="dataSource" ref="dataSource" />
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="databasePlatform" value="${jpa.dialect}" />
+				<property name="showSql" value="${jpa.showSql}" />
+				<property name="generateDdl" value="${jpa.generateDdl}" />
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="propertyConfigurer" 
+	  class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	    <property name="location" value="classpath:config/config.properties" />
+	</bean>
+
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jpa.username}" />
+		<property name="password" value="${jpa.password}" />
+	</bean>
+	
+	<!-- enabling annotation driven configuration / -->
+	<context:annotation-config />
+	<context:component-scan base-package="com.abc.ceop" />
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<cache:annotation-driven />
+	
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"
+		p:entityManagerFactory-ref="entityManagerFactory" />
+	<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager"
+		p:cacheManager-ref="ehCacheManager" />
+	<bean id="ehCacheManager" class="net.sf.ehcache.CacheManager" />
+	
+	 <!-- PERSISTENCE UNIT MANAGER and TRANSACTION MANAGERS -->
+
+  	<bean id="persistenceUnitManager"
+	        class="org.springframework.orm.jpa.persistenceunit.DefaultPersistenceUnitManager">
+	    <property name="dataSources">
+	      <map>
+	        <entry key="d1" value-ref="dataSource" />
+	        <entry key="d2" value-ref="dataSourceWebCati" />
+	      </map>
+	    </property>
+	 </bean>
+	 	 
+<!-- 	Webcati Persistence -->
+
+	<bean id="entityManagerFactoryWebCati"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceUnitName" value="puwebcati" />
+		<property name="dataSource" ref="dataSourceWebCati" />
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="databasePlatform" value="${jpa.dialect}" />
+				<property name="showSql" value="${jpa.showSql}" />
+				<property name="generateDdl" value="${jpa.generateDdl}" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="propertyConfigurerWebCati" 
+	  class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	    <property name="location" value="classpath:config/config.properties" />
+	</bean>
+	<bean id="dataSourceWebCati" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${jdbc.driverClassName.webcati}" />
+		<property name="url" value="${jdbc.url.webcati}" />
+		<property name="username" value="${jpa.username.webcati}" />
+		<property name="password" value="${jpa.password.webcati}" />
+	</bean>
+	
+	
+	<context:annotation-config />
+	<context:component-scan base-package="com.abc.ceop" />
+	<tx:annotation-driven transaction-manager="transactionManagerWebCati" />
+	<cache:annotation-driven />
+	
+	<bean id="transactionManagerWebCati" class="org.springframework.orm.jpa.JpaTransactionManager"
+		p:entityManagerFactory-ref="entityManagerFactoryWebCati" />
+	<bean id="cacheManagerWebcati" class="org.springframework.cache.ehcache.EhCacheCacheManager"
+		p:cacheManager-ref="ehCacheManagerWebCati" />
+	<bean id="ehCacheManagerWebCati" class="net.sf.ehcache.CacheManager" />
+	<bean id="entityManagerLoader" class="com.abc.ceop.util.EntityManagerLoader" />
+	
+	<bean id="loadLocationDao" class="com.abc.ceop.dao.jpa.LoadLocationsJpaDao" />
+	<bean id="dataLoaderDao" class="com.abc.ceop.dao.jpa.DataLoaderJpaDao" />
+	<bean id="internationalizableDao" class="com.abc.ceop.dao.jpa.InternationalizableJpaDao" />
+	<bean id="checkDatabaseDao" class="com.abc.ceop.dao.jpa.CheckDatabaseJpaDao" />
+	
+</beans>

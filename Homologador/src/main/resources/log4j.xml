@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC "-//LOGGER" "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<appender name="file" class="com.abc.ceop.log4j.NewLogForEachRunFileAppender">
+		<param name="File" value="log/ceop-homologador.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{dd-MM-yyyy HH:mm:ss,SSS} %-5p %-15c{1}: %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="errorfile" class="com.abc.ceop.log4j.NewLogForEachRunFileAppender">
+		<param name="File" value="log/ceop-homologador-ERROR.log" />
+		<param name="Threshold" value="ERROR" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{dd-MM-yyyy HH:mm:ss,SSS} %-5p %-15c{1}: %m%n" />
+		</layout>
+	</appender>
+
+	<logger name="com.abc.ceop">
+		<level value="debug" />
+	</logger>
+	
+	<logger name="org.mockftpserver">
+		<level value="error" />
+	</logger>
+	
+	<logger name="net.sf.ehcache">
+		<level value="error" />
+	</logger>
+
+	<!-- Root Logger -->
+	<root>
+		<priority value="warn" />
+		<appender-ref ref="file" />
+		<appender-ref ref="errorfile" />
+	</root>
+
+</log4j:configuration>

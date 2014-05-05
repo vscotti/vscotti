@@ -1,0 +1,1 @@
+mvn clean package -Dtest -DfailIfNoTests=false -Denv=prod

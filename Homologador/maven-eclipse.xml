@@ -1,0 +1,8 @@
+<project default="copy-resources">
+  <target name="init"/>
+  <target name="copy-resources" depends="init">
+    <copy todir="target/classes/config" filtering="false">
+      <fileset dir="src/main/resources/config/local" includes="config.properties|configwebcati.properties" excludes="**/*.java"/>
+    </copy>
+  </target>
+</project>
