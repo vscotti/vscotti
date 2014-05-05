@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AccionesArgentina</string>
+    <string name="action_settings">Settings</string>
+    <string name="intro_activity">Acciones / Bonos Argentina</string>
+    <string name="empty_value"></string>
+    <string name="acciones_title">ACCIONES</string>
+    <string name="bonos_title">BONOS</string>
+    <string name="seguimiento_title">SEGUIMIENTO</string>
+    <string name="cerrar_button">Cerrar</string>
+    <string name="seleccionar_button">Seleccionar</string>
+    <string name="agregar_seguimiento_button">Agregar Seguimiento</string>
+    <string name="agregar_accion_button">Agregar Accion</string>
+    <string name="agregar_bono_button">Agregar Bono</string>
+</resources>

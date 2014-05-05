@@ -1,0 +1,83 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical|center_horizontal"
+        android:orientation="vertical" >
+
+        <View
+	        android:layout_width="0dp"
+	        android:layout_height="0dp"
+	        android:layout_weight="2"
+	        android:visibility="invisible"/>
+        
+        <Button
+            android:id="@+id/acciones_action_button"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2.5"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/shape"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:text="@string/acciones_title"
+            android:textStyle="bold" />
+
+        <View
+	        android:layout_width="0dp"
+	        android:layout_height="0dp"
+	        android:layout_weight="1"
+	        android:visibility="invisible"/>
+        
+        <Button
+            android:id="@+id/bonos_action_button"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2.5"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/shape"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:text="@string/bonos_title"
+            android:textStyle="bold" />
+
+        <View
+	        android:layout_width="0dp"
+	        android:layout_height="0dp"
+	        android:layout_weight="1"
+	        android:visibility="invisible"/>
+        
+        <Button
+            android:id="@+id/alertas_action_button"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2.5"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/shape"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:text="@string/seguimiento_title"
+            android:textStyle="bold" />
+
+        <View
+	        android:layout_width="0dp"
+	        android:layout_height="0dp"
+	        android:layout_weight="3"
+	        android:visibility="invisible"/>
+        
+	</LinearLayout>
+
+</RelativeLayout>
