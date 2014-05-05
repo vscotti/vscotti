@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<faces-config
+    version="1.2"
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+						http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
+ 
+  	<application>
+    	<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
+		<view-handler>com.uade.tesis.web.utils.ValueBindingViewHandler</view-handler>
+  	</application>
+
+	<managed-bean>
+		<managed-bean-name>appbean</managed-bean-name>
+		<managed-bean-class>com.uade.tesis.web.beans.ApplicationBean</managed-bean-class>
+		<managed-bean-scope>application</managed-bean-scope>
+		<managed-property>
+			<property-name>viewmap</property-name>
+			<map-entries>
+				<key-class>java.lang.String</key-class>
+				<value-class>java.lang.String</value-class>
+				<map-entry>
+					<key>/com/uade/tesis/search.jsp</key>
+					<value>searchbean.initializeBean</value>
+				</map-entry>
+				<map-entry>
+					<key>/com/uade/tesis/crearposting.jsp</key>
+					<value>crearpostingbean.initializeBean</value>
+				</map-entry>
+				<map-entry>
+					<key>/com/uade/tesis/posting.jsp</key>
+					<value>postingbean.initializeBean</value>
+				</map-entry>
+			</map-entries>
+		</managed-property>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>crearpostingbean</managed-bean-name>
+		<managed-bean-class>com.uade.tesis.web.beans.CrearPostingBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>service</property-name>
+			<value>#{derematetesisservice}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>neuralNetworkService</property-name>
+			<value>#{neuralNetworkPosting}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>loggedUser</property-name>
+			<property-class>java.lang.String</property-class>
+			<value>1</value>
+		</managed-property>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>postingbean</managed-bean-name>
+		<managed-bean-class>com.uade.tesis.web.beans.PostingBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+
+		<managed-property>
+			<property-name>posting_id</property-name>
+			<value>#{param.posting_id}</value>
+		</managed-property>
+		
+		<managed-property>
+			<property-name>service</property-name>
+			<value>#{derematetesisservice}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>neuralNetworkService</property-name>
+			<value>#{neuralNetworkPosting}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>loggedUser</property-name>
+			<property-class>java.lang.String</property-class>
+			<value>1</value>
+		</managed-property>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>searchbean</managed-bean-name>
+		<managed-bean-class>com.uade.tesis.web.beans.SearchBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>searchesDir</property-name>
+			<property-class>java.lang.String</property-class>
+			<value>C:/Temp2/searches/</value>
+		</managed-property>
+		<managed-property>
+			<property-name>service</property-name>
+			<value>#{derematetesisservice}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>neuralNetworkService</property-name>
+			<value>#{neuralNetworkPosting}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>loggedUser</property-name>
+			<property-class>java.lang.String</property-class>
+			<value>1</value>
+		</managed-property>
+	</managed-bean>
+
+	<navigation-rule> 
+	    <from-view-id>/com/uade/tesis/posting.jsp</from-view-id> 
+	    <navigation-case> 
+	      	<from-outcome>failure</from-outcome> 
+	      	<to-view-id>/com/uade/tesis/404.jsp</to-view-id> 
+	    </navigation-case> 
+	</navigation-rule>  
+
+	<navigation-rule>
+	 	<from-view-id>/com/uade/tesis/crearposting.jsp</from-view-id>
+	 	<navigation-case>
+	  		<from-outcome>success</from-outcome>
+	  		<to-view-id>/com/uade/tesis/posting.jsf?posting_id=#{crearpostingbean.form.posting.id}</to-view-id>
+	  		<redirect/>
+	 	</navigation-case>
+	</navigation-rule>
+
+	<lifecycle>
+		<phase-listener>com.uade.tesis.utils.InitializingPhaseListener</phase-listener>
+	</lifecycle>
+
+</faces-config>
+

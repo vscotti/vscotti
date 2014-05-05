@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd">
+	<!-- ********************************************************************************************* -->
+	<!-- Controllers -->
+	<bean id="postingController" class="com.uade.tesis.web.PostingController">
+		<property name="formView" value="posting" />
+		<property name="successView" value="posting-success" />
+		<property name="commandClass" value="com.uade.tesis.web.command.PostingWebCommand" />
+		<property name="commandName" value="command" />
+	</bean>
+	<bean id="uploadController" class="com.uade.tesis.web.UploadController">
+		
+	</bean>
+	<!-- ********************************************************************************************* -->
+	<!-- Mappings -->
+	<bean id="simpleUrlMapping"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<map>
+				<entry key="posting.htm" value-ref="postingController" />
+				<entry key="upload.htm" value-ref="uploadController" />
+			</map>
+		</property>
+	</bean>
+	<!-- ********************************************************************************************* -->
+	<!-- View Configuration -->
+	<bean id="freemarkerConfig"
+		class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+		<property name="templateLoaderPaths" ref="freemarkerTemplateLoaderPaths" />
+	</bean>
+	<util:list id="freemarkerTemplateLoaderPaths">
+		<value>classpath:com/uade/tesis/resources/freemarker/</value>
+	</util:list>
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+		<property name="cache" value="true" />
+		<property name="prefix" value="" />
+		<property name="suffix" value=".ftl" />
+		<property name="exposeSpringMacroHelpers" value="true" />
+		<property name="exposeRequestAttributes" value="true" />
+		<property name="order">
+			<value>1</value>
+		</property>
+	</bean>
+</beans>

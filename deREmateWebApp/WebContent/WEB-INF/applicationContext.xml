@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd">
+	
+	<bean id="derematetesisservice" class="com.uade.tesis.services.DeRemateTesisServiceImpl">
+		<property name="categoriaDAO"><ref bean="categoriadao"/></property>
+		<property name="postingDAO"><ref bean="postingdao"/></property>
+		<property name="usuarioDAO"><ref bean="usuariodao"/></property>
+	</bean>
+	
+	<bean id="categoriadao" class="com.uade.tesis.services.daos.impl.CategoriaDAOImpl">
+	</bean>
+	
+	<bean id="postingdao" class="com.uade.tesis.services.daos.impl.PostingDAOImpl">
+	</bean>
+	
+	<bean id="usuariodao" class="com.uade.tesis.services.daos.impl.UsuarioDAOImpl">
+	</bean>
+	
+	<!-- ********************************************************************************************* -->
+	<!-- Utils -->
+	<bean id="neuralNetwork"
+			class="com.uade.tesis.neuralnetwork.services.NeuralNetworkSingletonServiceImpl">
+	</bean>
+	<bean id="neuralNetworkPosting"
+			class="com.uade.tesis.neuralnetwork.services.NeuralNetworkSingletonServiceImplPosting" 
+			init-method="learnNetwork">
+		<property name="deRemateTesisService"><ref bean="derematetesisservice"/></property>
+	</bean>
+</beans>

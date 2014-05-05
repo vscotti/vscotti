@@ -1,0 +1,52 @@
+.headerStyle {
+	background-color: RGB(0,0,153);
+	color: RGB(255,255,255);
+	font-size: 15px;
+	font-weight: bold;
+	font-family: "arial";
+	text-align: left;
+	height: 30px;
+}
+
+.headerStyleDescripcion {
+	color: RGB(0,0,153);
+	font-size: 15px;
+	font-weight: bold;
+	font-family: "arial";
+	text-align: left;
+	height: 30px;
+}
+
+.blueBorder {
+	border-style: solid; 
+	border-color: RGB(0,0,153); 
+	border-width: 1px;
+}
+
+.postingColumn {
+	width: 50%;
+}
+
+.postingColumn2 {
+	width: 30%;
+	font-size: 9px;
+	font-weight: bold;
+	font-family: "arial";
+	text-align: left;
+}
+
+.postingColumn3 {
+	width: 70%;
+}
+
+.busquedaMarcada {
+	background-color: RGB(227,233,255);
+	height: 105px;
+	width: 105px;
+}
+
+.busquedaNoMarcada {
+	background-color: RGB(255,255,255);
+	height: 105px;
+	width: 105px;
+}
