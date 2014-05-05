@@ -1,0 +1,36 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+
+    <ImageView
+        android:id="@+id/espanol_action_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="135dp"
+        android:contentDescription="@string/basura"
+        android:src="@drawable/espanol" />
+
+    <ImageView
+        android:id="@+id/english_action_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/espanol_action_button"
+        android:layout_below="@+id/espanol_action_button"
+        android:layout_marginTop="24dp"
+        android:contentDescription="@string/basura"
+        android:src="@drawable/english" />
+
+    <ImageView
+        android:id="@+id/startgame_action_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:contentDescription="@string/basura"
+        android:src="@drawable/check_small" />
+
+</RelativeLayout>

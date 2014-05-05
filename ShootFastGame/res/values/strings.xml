@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">BeeGame</string>
+    <string name="title_activity_main">Bee Game</string>
+    <string name="basura">NA</string>
+    <string-array name="layout_values_english">
+        <item >Flowers</item>
+        <item >FootBall</item>
+        <item >Tennis</item>
+        <item >Lake</item>
+        <item >Custom</item>
+        </string-array>
+    <string-array name="layout_values_espanol">
+        <item >Flores</item>
+        <item >Futbol</item>
+        <item >Tenis</item>
+        <item >Lago</item>
+        <item >Crear</item>
+	</string-array>
+</resources>
