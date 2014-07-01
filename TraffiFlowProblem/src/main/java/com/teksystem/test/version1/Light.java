@@ -17,6 +17,9 @@ public class Light {
 
 	private static enum LightStatus {GREEN, RED};
 
+	public Light() {
+	}
+	
 	public Light(int number, int duration) {
 		this.duration = duration;
 		this.number = number;

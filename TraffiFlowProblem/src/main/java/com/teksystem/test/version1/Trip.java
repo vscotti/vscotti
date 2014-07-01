@@ -21,6 +21,9 @@ public class Trip {
 	// The Car
 	private Car car;
 
+	public Trip() {
+	}
+
 	public Trip(int[] ls, int speed) {
 		lights = new ArrayList<Light>();
 		for(int i = 0 ; i < ls.length ; i++) {
@@ -61,7 +64,7 @@ public class Trip {
 	 * 
 	 * @return the amount of seconds that takes this trip
 	 */
-	public int calculateTripTime() {
+	private int calculateTripTime() {
 		int speed = car.getSpeed();
 		double time = 0;
 		// Time to arrive to next light
