@@ -1,10 +1,12 @@
-package com.teksystem.test.version2;
+package com.trafficflow.test.version2;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+
+import com.trafficflow.test.version2.TraffiFlow;
 
 public class TrafficFlowTest {
 	

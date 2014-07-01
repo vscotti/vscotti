@@ -1,10 +1,12 @@
-package com.teksystem.test.version1;
+package com.trafficflow.test.version1;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+
+import com.trafficflow.test.version1.Light;
 
 public class LigthTest {
     private Light light;

@@ -1,4 +1,4 @@
-package com.teksystem.test.version1;
+package com.trafficflow.test.version1;
 
 /**
  * This class represent a Light. A light has number and duration. The number is the unique identification and the duration is the time that takes to change.

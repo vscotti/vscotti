@@ -1,4 +1,4 @@
-package com.teksystem.test.version1;
+package com.trafficflow.test.version1;
 
 /**
  * This class represent a Car. A car has speed. This speed can't be greater than 30, least than 5 and should be 5, 10, 15, 20, 25 or 30

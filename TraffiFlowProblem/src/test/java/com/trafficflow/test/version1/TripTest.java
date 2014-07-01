@@ -1,4 +1,4 @@
-package com.teksystem.test.version1;
+package com.trafficflow.test.version1;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +8,10 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+
+import com.trafficflow.test.version1.Car;
+import com.trafficflow.test.version1.Light;
+import com.trafficflow.test.version1.Trip;
 
 public class TripTest {
     private Trip trip;
