@@ -28,6 +28,6 @@ public class TraffiFlow {
 ////		Returns: 252
 		
 		Trip trip = new Trip(a, s);
-		System.out.println(trip.run());
+		trip.run();
 	}
 }

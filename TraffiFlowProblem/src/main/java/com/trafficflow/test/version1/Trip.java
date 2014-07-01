@@ -32,6 +32,11 @@ public class Trip {
 		car = new Car(speed);
 	}
 	
+	public Trip(List<Light> lights, Car car) {
+		this.car = car;
+		this.lights = lights;
+	}
+	
 	public List<Light> getLights() {
 		return lights;
 	}
