@@ -85,8 +85,6 @@ public class Trip extends TrafficFlowAbstract {
 		
 		System.out.println("time: " + Math.floor(time) + " - the car reaches the end, 150 meters past the last traffic light.");
 		
-		System.out.println("car time: " + car.getTimer());
-		
 		// Return the round value
 		return (int) Math.floor(time);
 	}
