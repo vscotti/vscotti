@@ -1,21 +1,15 @@
 package com.trafficflow.test.version2;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import com.trafficflow.test.version2.TraffiFlow;
+import com.trafficflow.test.commons.TrafficFlow;
 
 public class TrafficFlowTest {
 	
-    private TraffiFlow tf;
-
-    @Before
-    public void createSimulation() {
-        tf = new TraffiFlow();
-    }
+    private TrafficFlow tf;
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
@@ -23,7 +17,8 @@ public class TrafficFlowTest {
     @Test
     public void testValidSpeed() {
     	int[] a = {10};
-    	tf.validateData(a, 5);
+        tf = new Trip(a, 5);
+    	tf.validate();
     	Assert.assertTrue(true);
     }
 
@@ -31,55 +26,64 @@ public class TrafficFlowTest {
     public void testInvalidSpeed1() {
         expectedException.expect(IllegalArgumentException.class);
     	int[] a = {10};
-    	tf.validateData(a, 1);
+        tf = new Trip(a, 1);
+    	tf.validate();
     }
 
     @Test
     public void testInvalidSpeed2() {
         expectedException.expect(IllegalArgumentException.class);
     	int[] a = {10};
-    	tf.validateData(a, 6);
+        tf = new Trip(a, 6);
+    	tf.validate();
     }
 
     @Test
     public void testInvalidSpeed3() {
         expectedException.expect(IllegalArgumentException.class);
     	int[] a = {10};
-    	tf.validateData(a, 45);
+        tf = new Trip(a, 45);
+    	tf.validate();
     }
 
     @Test
     public void testInvalidEmptyLights() {
         expectedException.expect(IllegalArgumentException.class);
     	int[] a = {};
-    	tf.validateData(a, 30);
+        tf = new Trip(a, 30);
+    	tf.validate();
     }
 
     @Test
     public void testInvalidLights1() {
         expectedException.expect(IllegalArgumentException.class);
     	int[] a = {1};
-    	tf.validateData(a, 30);
+        tf = new Trip(a, 30);
+    	tf.validate();
     }
 
     @Test
     public void testInvalidLights2() {
         expectedException.expect(IllegalArgumentException.class);
     	int[] a = {69};
-    	tf.validateData(a, 30);
+        tf = new Trip(a, 30);
+    	tf.validate();
     }
 
     @Test
     public void testInvalidMoreThan50Lights() {
         expectedException.expect(IllegalArgumentException.class);
     	int[] a = {10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10};
-    	tf.validateData(a, 30);
+        tf = new Trip(a, 30);
+    	tf.validate();
     }
 
     @Test
     public void testValidRun() {
     	int[] a = {10,10,10};
-    	int triptime = tf.runTrip(a, 5);
+        tf = new Trip(a, 5);
+    	tf.validate();
+    	int triptime = tf.run();
     	Assert.assertTrue(triptime == 150);
     }
 

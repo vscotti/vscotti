@@ -8,6 +8,7 @@ package com.trafficflow.test.version1;
  */
 public class Car {
 
+	private double tripTime;
 	private int speed;
 
 	public Car() {
@@ -15,6 +16,7 @@ public class Car {
 
 	public Car(int speed) {
 		this.speed = speed;
+		this.tripTime = 0;
 	}
 	
 	public int getSpeed() {
@@ -39,4 +41,16 @@ public class Car {
 			throw new IllegalArgumentException("Speed should be 5, 10, 15, 20, 25 or 30");
 		}
 	}
+	
+    public void drive(double distance){
+        tripTime += distance / getSpeed();
+    }
+
+    public void stop(double timeToWait){
+        tripTime += timeToWait;
+    }
+
+    public double getTimer() {
+        return tripTime;
+    }
 }

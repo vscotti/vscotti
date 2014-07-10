@@ -6,7 +6,9 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TraffiFlow2 {
+import com.trafficflow.test.commons.TrafficFlow;
+
+public class TraffiFlowMain2 {
 
 	public static void main(String[] args) {
 		try{
@@ -22,7 +24,7 @@ public class TraffiFlow2 {
 				try {
 					List<Integer> list = new ArrayList<Integer>();
 					for (String l : lights) {
-						list.add(Integer.parseInt(l));
+						list.add(Integer.parseInt(l.trim()));
 					}
 					valid = true;
 					Integer[] aux = list.toArray(new Integer[list.size()]);
@@ -46,7 +48,7 @@ public class TraffiFlow2 {
 					System.out.println("Data error, Please enter again the information.");
 				}
 			}
-			Trip trip = new Trip(a, s);
+			TrafficFlow trip = new Trip(a, s);
 			trip.run();
 		} catch(IOException e) {
 			e.printStackTrace();

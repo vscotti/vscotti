@@ -73,7 +73,7 @@ public class Light {
 	 * 
 	 * @return waiting time
 	 */
-	public double getWaitingTime(double time) {
+	public double getRemainingTimeNextChange(double time) {
 		if(!isGreen(time)) {
 			return (double)(((int)(time / duration) + 1) * duration) - time;
 		} 

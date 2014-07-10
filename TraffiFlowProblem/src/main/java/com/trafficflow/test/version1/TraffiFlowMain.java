@@ -1,6 +1,8 @@
 package com.trafficflow.test.version1;
 
-public class TraffiFlow {
+import com.trafficflow.test.commons.TrafficFlow;
+
+public class TraffiFlowMain {
 
 	public static void main(String[] args) {
 //		int[] a = {10,10,10};
@@ -27,7 +29,7 @@ public class TraffiFlow {
 //		int s = 25;
 ////		Returns: 252
 		
-		Trip trip = new Trip(a, s);
+		TrafficFlow trip = new Trip(a, s);
 		trip.run();
 	}
 }

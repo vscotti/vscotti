@@ -1,7 +1,10 @@
 package com.trafficflow.test.version1;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import com.trafficflow.test.commons.CarBuilder;
+import com.trafficflow.test.commons.LightsBuilder;
+import com.trafficflow.test.commons.TrafficFlowAbstract;
 
 /**
  * Class that represent the road/trip of a car. 
@@ -10,7 +13,7 @@ import java.util.List;
  * @author Victor Scotti
  *
  */
-public class Trip {
+public class Trip extends TrafficFlowAbstract {
 
 	// Distance between lights
 	private static final int DISTANCE_BETWEEN_LIGTHS = 150;
@@ -24,19 +27,12 @@ public class Trip {
 	public Trip() {
 	}
 
-	public Trip(int[] ls, int speed) {
-		lights = new ArrayList<Light>();
-		for(int i = 0 ; i < ls.length ; i++) {
-			lights.add(new Light(i + 1 , ls[i]));
-		}
-		car = new Car(speed);
+	public Trip(int[] lights, int speed) {
+		this.lights = LightsBuilder.getLights(lights);
+		this.car = CarBuilder.getCar(speed);
 	}
 	
-	public Trip(List<Light> lights, Car car) {
-		this.car = car;
-		this.lights = lights;
-	}
-	
+
 	public List<Light> getLights() {
 		return lights;
 	}
@@ -53,23 +49,12 @@ public class Trip {
 		this.car = car;
 	}
 	
-	
-	/**
-	 * Method to calculate the time that takes to go from beginning to end. With validating the information
-	 * 
-	 * @return the amount of seconds that takes this trip
-	 */
-	public int run() {
-		validate();
-		return calculateTripTime();
-	}
-	
 	/**
 	 * Method to calculate the time that takes to go from beginning to end.
 	 * 
 	 * @return the amount of seconds that takes this trip
 	 */
-	private int calculateTripTime() {
+	public int calculateTripTime() {
 		int speed = car.getSpeed();
 		double time = 0;
 		// Time to arrive to next light
@@ -82,7 +67,7 @@ public class Trip {
 			// Once car arrive to light should check if the light is green
 			boolean isGreen = light.isGreen(time);
 			// Calculating waiting time. If light is in green waiting time = 0
-			double wt = light.getWaitingTime(time);
+			double wt = light.getRemainingTimeNextChange(time);
 			
 			System.out.println("time: " + time + " - car arrive at light " + light.getNumber() + " light is " + ((isGreen)?"green":"red"));
 			if(!isGreen) {
