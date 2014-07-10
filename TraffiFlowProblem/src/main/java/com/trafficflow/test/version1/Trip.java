@@ -30,9 +30,10 @@ public class Trip extends TrafficFlowAbstract {
 	public Trip(int[] lights, int speed) {
 		this.lights = LightsBuilder.getLights(lights);
 		this.car = CarBuilder.getCar(speed);
+		
+		addObservers(car);
 	}
 	
-
 	public List<Light> getLights() {
 		return lights;
 	}
@@ -47,6 +48,8 @@ public class Trip extends TrafficFlowAbstract {
 
 	public void setCar(Car car) {
 		this.car = car;
+		
+		addObservers(car);
 	}
 	
 	/**
@@ -61,6 +64,7 @@ public class Trip extends TrafficFlowAbstract {
 		double timeTonext = (double) DISTANCE_BETWEEN_LIGTHS / speed;
 		// Initial time should be at first light
 		time = timeTonext;
+		move(time);
 
 		// Move for each light
 		for (Light light : lights) {
@@ -76,9 +80,12 @@ public class Trip extends TrafficFlowAbstract {
 			
 			// Add the waiting time and time to get next light. 
 			time += wt + timeTonext;
+			move(time);
 		}
 		
 		System.out.println("time: " + Math.floor(time) + " - the car reaches the end, 150 meters past the last traffic light.");
+		
+		System.out.println("car time: " + car.getTimer());
 		
 		// Return the round value
 		return (int) Math.floor(time);
@@ -107,5 +114,9 @@ public class Trip extends TrafficFlowAbstract {
 			light.validate();
 		}
 		
+	}
+	
+	private void move(double time) {
+		notififyObservers(time);
 	}
 }

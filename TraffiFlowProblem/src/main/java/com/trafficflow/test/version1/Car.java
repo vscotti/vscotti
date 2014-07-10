@@ -1,14 +1,16 @@
 package com.trafficflow.test.version1;
 
+import com.trafficflow.test.commons.Observer;
+
 /**
  * This class represent a Car. A car has speed. This speed can't be greater than 30, least than 5 and should be 5, 10, 15, 20, 25 or 30
  * 
  * @author Victor Scotti
  *
  */
-public class Car {
+public class Car implements Observer {
 
-	private double tripTime;
+	private double timer;
 	private int speed;
 
 	public Car() {
@@ -16,7 +18,7 @@ public class Car {
 
 	public Car(int speed) {
 		this.speed = speed;
-		this.tripTime = 0;
+		this.timer = 0;
 	}
 	
 	public int getSpeed() {
@@ -42,15 +44,11 @@ public class Car {
 		}
 	}
 	
-    public void drive(double distance){
-        tripTime += distance / getSpeed();
-    }
-
-    public void stop(double timeToWait){
-        tripTime += timeToWait;
-    }
-
     public double getTimer() {
-        return tripTime;
+        return timer;
     }
+
+	public void update(double time) {
+		this.timer = time;
+	}
 }
