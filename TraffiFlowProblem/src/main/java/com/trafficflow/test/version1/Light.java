@@ -1,5 +1,7 @@
 package com.trafficflow.test.version1;
 
+import com.trafficflow.test.commons.Observer;
+
 /**
  * This class represent a Light. A light has number and duration. The number is the unique identification and the duration is the time that takes to change.
  * This duration can't be greater than 60 and least than 10
@@ -7,7 +9,7 @@ package com.trafficflow.test.version1;
  * @author Victor Scotti
  *
  */
-public class Light {
+public class Light implements Observer {
 
 	// Id
 	private int number;
@@ -15,6 +17,10 @@ public class Light {
 	// Time to change the light
 	private int duration;
 
+	// Status indicator 
+	private boolean isGreen;
+	private double remainingTimeNexChange;
+	
 	private static enum LightStatus {GREEN, RED};
 
 	public Light() {
@@ -41,17 +47,8 @@ public class Light {
 		this.duration = duration;
 	}
 	
-	/**¨
-	 * This method return is the light is green or not for a period of time.
-	 * To do this, it used time / duration. This value represents how many changes did the light. With module 2 get is the 
-	 * light is on 0 or 1. O = Green and 1 = Red
-	 * 
-	 * @param time - Represents the time that wants to check
-	 * 
-	 * @return is green or not
-	 */
-	public boolean isGreen(double time) {
-		return ((int)(time / duration) % 2) == LightStatus.GREEN.ordinal();
+	public boolean isGreen() {
+		return isGreen;
 	}
 	
 	/**
@@ -73,11 +70,8 @@ public class Light {
 	 * 
 	 * @return waiting time
 	 */
-	public double getRemainingTimeNextChange(double time) {
-		if(!isGreen(time)) {
-			return (double)(((int)(time / duration) + 1) * duration) - time;
-		} 
-		return 0.0;
+	public double getRemainingTimeNextChange() {
+		return remainingTimeNexChange;
 	}
 	
 	/**
@@ -90,5 +84,24 @@ public class Light {
 		if(duration > 60) {
 			throw new IllegalArgumentException("Duration should be least or equal to 60");
 		}
+	}
+
+	/**
+	 * This method return is the light is green or not for a period of time.
+	 * To do this, it used time / duration. This value represents how many changes did the light. With module 2 get is the 
+	 * light is on 0 or 1. O = Green and 1 = Red
+	 * 
+	 * @param time - Represents the time that wants to check
+	 * 
+	 * @return is green or not
+	 */
+	public void update(double time) {
+		isGreen = ((int)(time / duration) % 2) == LightStatus.GREEN.ordinal();
+		remainingTimeNexChange = 0.0;
+		if(!isGreen()) {
+			// Calculating waiting time. If light is in green waiting time = 0
+			remainingTimeNexChange = (double)(((int)(time / duration) + 1) * duration) - time;
+		} 
+
 	}
 }

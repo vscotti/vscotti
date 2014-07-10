@@ -32,6 +32,9 @@ public class Trip extends TrafficFlowAbstract {
 		this.car = CarBuilder.getCar(speed);
 		
 		addObservers(car);
+		for (Light light : this.lights) {
+			addObservers(light);
+		}
 	}
 	
 	public List<Light> getLights() {
@@ -69,9 +72,8 @@ public class Trip extends TrafficFlowAbstract {
 		// Move for each light
 		for (Light light : lights) {
 			// Once car arrive to light should check if the light is green
-			boolean isGreen = light.isGreen(time);
-			// Calculating waiting time. If light is in green waiting time = 0
-			double wt = light.getRemainingTimeNextChange(time);
+			boolean isGreen = light.isGreen();
+			double wt = light.getRemainingTimeNextChange();
 			
 			System.out.println("time: " + time + " - car arrive at light " + light.getNumber() + " light is " + ((isGreen)?"green":"red"));
 			if(!isGreen) {
